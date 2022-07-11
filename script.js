@@ -1,6 +1,7 @@
 //UI
 const numberButtons = document.querySelectorAll('.num');
 const display = document.querySelector('.display');
+const clearButton = document.querySelector('.clear');
 
 //The operations
 
@@ -35,9 +36,14 @@ function operate(operator, firstNum, secondNum) {
 };
 
 //Event listener to populate the display with the number clicked
-let displayValue = null;
-numberButtons.forEach(button => button.addEventListener('click', (e) => {
-    display.textContent += button.textContent;
-    displayValue = Number(button.textContent)
-}));
+function populateDisplay() {
+    display.textContent += this.textContent;
+    displayValue = Number(display.textContent);
+}
+numberButtons.forEach(button => button.addEventListener('click', populateDisplay
+));
 
+//Clear button
+clearButton.addEventListener('click', (e) => {
+    display.textContent = '';
+});
