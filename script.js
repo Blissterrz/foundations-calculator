@@ -43,34 +43,43 @@ function operate(operator, firstNum, secondNum) {
 
 //Function to populate the display with the number clicked
 function populateDisplay() {
-    display.textContent += this.textContent;
-    displayValue = Number(display.textContent);
+    if(typingStatus === null) {
+        display.textContent= '';
+        display.textContent += this.textContent;
+    } else {
+        display.textContent += this.textContent;
+    }
+    typingStatus = 'active';
 }
 
 numberButtons.forEach(button => button.addEventListener('click', populateDisplay));
 
-//Clear button
-clearButton.addEventListener('click', (e) => {
-    display.textContent = '';
-});
 
-//Operations event listeners
+//Operations functions
 let firstValue = null;
 let secondValue = null;
-let currentOperator = '';
+let currentOperator = null;
+let typingStatus = null;
+
+        //Clear button
+        clearButton.addEventListener('click', (e) => {
+            display.textContent = '';
+            firstValue = null;
+            secondValue = null;
+        });
 
 function evaluate() {
-    if(firstValue === null){
+    if(firstValue === null) {
         firstValue = Number(display.textContent);
         currentOperator = this.textContent;
-        display.textContent = '';
     } else {
         secondValue = Number(display.textContent);
-        intermediate = operate(currentOperator,firstValue,secondValue);
-        display.textContent = intermediate;
-        firstValue = intermediate;
+        currentOperator = this.textContent;
+        display.textContent = operate(currentOperator, firstValue, secondValue);
+        firstValue = Number(display.textContent);
     }
-}
+    typingStatus = null;
+};
 
 operatorButtons.forEach(button => button.addEventListener('click', evaluate));
 
