@@ -3,11 +3,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 25vh;
+    margin-top: 15vh;
     gap: 2vh;
 }
 
-.btn {
+button {
     width: 12vh;
     height: 12vh;
+}
+
+.top {
+    width: 25vh;
+}
+
+.row {
+    display:flex;
+    gap: 1vh;
 }

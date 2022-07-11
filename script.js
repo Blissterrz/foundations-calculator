@@ -1,3 +1,7 @@
+//UI
+const numberButtons = document.querySelectorAll('.num');
+const display = document.querySelector('.display');
+
 //The operations
 
 //Addition
@@ -29,3 +33,11 @@ function operate(operator, firstNum, secondNum) {
         return divide(firstNum,secondNum);
     }
 };
+
+//Event listener to populate the display with the number clicked
+let displayValue = null;
+numberButtons.forEach(button => button.addEventListener('click', (e) => {
+    display.textContent += button.textContent;
+    displayValue = Number(button.textContent)
+}));
+
