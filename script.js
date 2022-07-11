@@ -74,7 +74,9 @@ function evaluate() {
         currentOperator = this.textContent;
     } else {
         secondValue = parseFloat(display.textContent);
-        display.textContent = operate(currentOperator, firstValue, secondValue);
+        result = operate(currentOperator,firstValue,secondValue);
+        result = Math.round(result * 100000) / 100000;
+        display.textContent = result;
         currentOperator = this.textContent;
         firstValue = parseFloat(display.textContent);
     }
@@ -85,7 +87,9 @@ operatorButtons.forEach(button => button.addEventListener('click', evaluate));
 
 equal.addEventListener('click', (e) => {
     secondValue = parseFloat(display.textContent);
-    display.textContent = operate(currentOperator,firstValue,secondValue);
+    result = operate(currentOperator,firstValue,secondValue);
+    result = Math.round(result * 100000) / 100000;
+    display.textContent = result;
     firstValue = null;
     secondValue = null;
     typingStatus = null;
