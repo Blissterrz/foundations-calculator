@@ -74,8 +74,8 @@ function evaluate() {
         currentOperator = this.textContent;
     } else {
         secondValue = Number(display.textContent);
-        currentOperator = this.textContent;
         display.textContent = operate(currentOperator, firstValue, secondValue);
+        currentOperator = this.textContent;
         firstValue = Number(display.textContent);
     }
     typingStatus = null;
