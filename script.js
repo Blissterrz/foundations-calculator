@@ -44,7 +44,7 @@ function operate(operator, firstNum, secondNum) {
 //Function to populate the display with the number clicked
 function populateDisplay() {
     if(typingStatus === null) {
-        display.textContent= '';
+        display.textContent = '';
         display.textContent += this.textContent;
     } else {
         display.textContent += this.textContent;
@@ -70,13 +70,13 @@ let typingStatus = null;
 
 function evaluate() {
     if(firstValue === null) {
-        firstValue = Number(display.textContent);
+        firstValue = parseFloat(display.textContent);
         currentOperator = this.textContent;
     } else {
-        secondValue = Number(display.textContent);
+        secondValue = parseFloat(display.textContent);
         display.textContent = operate(currentOperator, firstValue, secondValue);
         currentOperator = this.textContent;
-        firstValue = Number(display.textContent);
+        firstValue = parseFloat(display.textContent);
     }
     typingStatus = null;
 };
@@ -84,10 +84,11 @@ function evaluate() {
 operatorButtons.forEach(button => button.addEventListener('click', evaluate));
 
 equal.addEventListener('click', (e) => {
-    secondValue = Number(display.textContent);
+    secondValue = parseFloat(display.textContent);
     display.textContent = operate(currentOperator,firstValue,secondValue);
     firstValue = null;
     secondValue = null;
+    typingStatus = null;
 });
 
 
