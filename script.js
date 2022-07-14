@@ -9,6 +9,7 @@ const divideButton = document.querySelector('.divideSymbol');
 const operatorButtons = document.querySelectorAll('.operator');
 const equal = document.querySelector('.equalSymbol');
 const dotButton = document.querySelector('.dot');
+const backspace = document.querySelector('.backspace');
 
 //The operations
 
@@ -107,3 +108,11 @@ function addPoint() {
 
 dotButton.addEventListener('click', addPoint);
 
+//Function to remove a number when clicking backspace
+function removeChar() {
+    display.textContent = display.textContent
+    .toString()
+    .slice(0,-1)
+};
+
+backspace.addEventListener('click', removeChar);
