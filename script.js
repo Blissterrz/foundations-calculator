@@ -10,6 +10,7 @@ const operatorButtons = document.querySelectorAll('.operator');
 const equal = document.querySelector('.equalSymbol');
 const dotButton = document.querySelector('.dot');
 const backspace = document.querySelector('.backspace');
+const operationScreen = document.querySelector('.operationScreen');
 
 //The operations
 
@@ -66,14 +67,17 @@ let typingStatus = null;
         //Clear button
         clearButton.addEventListener('click', (e) => {
             display.textContent = '';
+            operationScreen.textContent ='';
             firstValue = null;
             secondValue = null;
+            currentOperator = null;
         });
 
 function evaluate() {
     if(firstValue === null) {
         firstValue = parseFloat(display.textContent);
         currentOperator = this.textContent;
+        operationScreen.textContent = `${firstValue} ${currentOperator}`
     } else {
         secondValue = parseFloat(display.textContent);
         result = operate(currentOperator,firstValue,secondValue);
@@ -81,6 +85,7 @@ function evaluate() {
         display.textContent = result;
         currentOperator = this.textContent;
         firstValue = parseFloat(display.textContent);
+        operationScreen.textContent = `${firstValue} ${currentOperator}`
     }
     typingStatus = null;
 };
@@ -92,6 +97,7 @@ equal.addEventListener('click', (e) => {
     result = operate(currentOperator,firstValue,secondValue);
     result = Math.round(result * 100000) / 100000;
     display.textContent = result;
+    operationScreen.textContent = '';
     firstValue = null;
     secondValue = null;
     typingStatus = null;
