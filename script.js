@@ -8,6 +8,7 @@ const multiplyButton = document.querySelector('.multiplySymbol');
 const divideButton = document.querySelector('.divideSymbol');
 const operatorButtons = document.querySelectorAll('.operator');
 const equal = document.querySelector('.equalSymbol');
+const dotButton = document.querySelector('.dot');
 
 //The operations
 
@@ -95,4 +96,14 @@ equal.addEventListener('click', (e) => {
     typingStatus = null;
 });
 
+//Function to add a point
+function addPoint() {
+    if(display.textContent.includes('.')) {
+        return;
+    } else {
+        display.textContent += '.';
+    }
+};
+
+dotButton.addEventListener('click', addPoint);
 
